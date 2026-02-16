@@ -13,7 +13,6 @@ const Home = () => {
       <Hero />
       <Features />
       <Testimonial />
-      <CallToAction />
       <Footer />
     </div>
   )
