@@ -167,7 +167,37 @@ const ModernTemplate = ({ data, accentColor }) => {
 							</div>
 						</section>
 					)}
-				</div>
+            {/* Languages */}
+            {data.languages && data.languages.length > 0 && (
+            <section className="mt-10">
+                <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
+                Languages
+                </h2>
+
+                <div className="text-gray-700">
+                {data.languages
+                    .map((language) =>
+                    language.level
+                        ? `${language.name} • ${language.level}`
+                        : language.name
+                    )
+                    .join(' • ')}
+                </div>
+            </section>
+            )}
+
+            {/* Certifications */}
+            {data.certifications && data.certifications.length > 0 && (
+            <section className="mt-10">
+                <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
+                Certifications
+                </h2>
+
+                <div className="text-gray-700">
+                {data.certifications.map((certification) => certification.name).join(' • ')}
+                </div>
+            </section>
+            )}				</div>
 			</div>
 		</div>
 	);

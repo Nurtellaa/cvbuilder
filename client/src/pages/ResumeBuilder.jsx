@@ -27,6 +27,8 @@ import ExperienceForm from '../components/ExperienceForm'
 import EducationForm from '../components/EducationForm'
 import ProjectForm from '../components/ProjectForm'
 import SkillsForm from '../components/SkillsForm'
+import LanguagesForm from '../components/LanguagesForm'
+import CertificationsForm from '../components/CertificationsForm'
 
 const ensurePrintStyles = () => {
   const styleId = 'cv-print-styles'
@@ -116,6 +118,8 @@ const ResumeBuilder = () => {
     education: [],
     project: [],
     skills: [],
+    languages: [],
+    certifications: [],
     template: 'classic',
     accent_color: '#0d9488',
     public: true,
@@ -132,6 +136,8 @@ const ResumeBuilder = () => {
     { id: 'education', icon: GraduationCap, name: 'Education', description: 'Academic background' },
     { id: 'projects', icon: FolderIcon, name: 'Projects', description: 'Key projects & achievements' },
     { id: 'skills', icon: Sparkles, name: 'Skills', description: 'Technical & soft skills' },
+    { id: 'languages', icon: Sparkles, name: 'Languages', description: 'Languages you speak' },
+    { id: 'certifications', icon: Sparkles, name: 'Certifications', description: 'Licenses and certifications' },
   ]
 
   const activeSection = sections[activeSectionIndex]
@@ -150,8 +156,18 @@ const ResumeBuilder = () => {
       const { data } = await api.get('/api/resumes/get/' + resumeId, {
         headers: { Authorization: token }
       })
+
       if (data.resume) {
-        setResumeData(data.resume)
+        setResumeData({
+          ...data.resume,
+          skills: data.resume.skills || [],
+          languages: data.resume.languages || [],
+          certifications: data.resume.certifications || [],
+          experience: data.resume.experience || [],
+          education: data.resume.education || [],
+          project: data.resume.project || [],
+        })
+
         document.title = data.resume.title
       }
     } catch (error) {
@@ -522,14 +538,32 @@ const ResumeBuilder = () => {
                       }
                     />
                   )}
-                  {activeSection.id === 'skills' && (
-                    <SkillsForm
-                      data={resumeData.skills}
-                      onChange={(data) =>
-                        setResumeData((prev) => ({ ...prev, skills: data }))
-                      }
-                    />
-                  )}
+                    {activeSection.id === 'skills' && (
+                      <SkillsForm
+                        data={resumeData.skills}
+                        onChange={(data) =>
+                          setResumeData((prev) => ({ ...prev, skills: data }))
+                        }
+                      />
+                    )}
+
+                    {activeSection.id === 'languages' && (
+                      <LanguagesForm
+                        data={resumeData.languages || []}
+                        onChange={(data) =>
+                          setResumeData((prev) => ({ ...prev, languages: data }))
+                        }
+                      />
+                    )}
+
+                    {activeSection.id === 'certifications' && (
+                      <CertificationsForm
+                        data={resumeData.certifications || []}
+                        onChange={(data) =>
+                          setResumeData((prev) => ({ ...prev, certifications: data }))
+                        }
+                      />
+                    )}
                 </div>
 
                 {/* Save Button */}
