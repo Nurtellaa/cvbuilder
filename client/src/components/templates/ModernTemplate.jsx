@@ -220,7 +220,7 @@ const ModernTemplate = ({ data, accentColor }) => {
 
                 {/* Strategic Competencies */}
                 {data.skills && data.skills.length > 0 && (
-                    <section className="pt-8 border-t border-gray-200">
+                    <section className="mb-10">
                         <h2 className="text-2xl font-light tracking-wide mb-8 text-center">
                             COMPETENCIES
                         </h2>
@@ -233,6 +233,46 @@ const ModernTemplate = ({ data, accentColor }) => {
                                     style={{ backgroundColor: accentColor }}
                                 >
                                     {skill}
+                                </span>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
+                {/* Languages */}
+                {data.languages && data.languages.length > 0 && (
+                    <section className="mb-10">
+                        <h2 className="text-2xl font-light tracking-wide mb-6 text-center">
+                            LANGUAGES
+                        </h2>
+
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {data.languages.map((language, index) => (
+                                <span
+                                    key={index}
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-full"
+                                >
+                                    {language.name}{language.level ? ` (${language.level})` : ''}
+                                </span>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
+                {/* Certifications */}
+                {data.certifications && data.certifications.length > 0 && (
+                    <section>
+                        <h2 className="text-2xl font-light tracking-wide mb-6 text-center">
+                            CERTIFICATIONS
+                        </h2>
+
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {data.certifications.map((cert, index) => (
+                                <span
+                                    key={index}
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-full"
+                                >
+                                    {cert.name}
                                 </span>
                             ))}
                         </div>

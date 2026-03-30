@@ -101,37 +101,37 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                         </section>
                     )}
 
-            {/* Languages */}
-            {data.languages && data.languages.length > 0 && (
-            <section className="mt-10">
-                <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
-                Languages
-                </h2>
+                    {/* Languages */}
+                    {data.languages && data.languages.length > 0 && (
+                        <section className="mt-8">
+                            <h2 className="text-sm font-semibold tracking-widest text-zinc-600 mb-4">
+                                LANGUAGES
+                            </h2>
 
-                <div className="text-gray-700">
-                {data.languages
-                    .map((language) =>
-                    language.level
-                        ? `${language.name} • ${language.level}`
-                        : language.name
-                    )
-                    .join(' • ')}
-                </div>
-            </section>
-            )}
+                            <div className="text-sm text-zinc-700">
+                                {data.languages
+                                    .map((language) =>
+                                        language.level
+                                            ? `${language.name} • ${language.level}`
+                                            : language.name
+                                    )
+                                    .join(' • ')}
+                            </div>
+                        </section>
+                    )}
 
-            {/* Certifications */}
-            {data.certifications && data.certifications.length > 0 && (
-            <section className="mt-10">
-                <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
-                Certifications
-                </h2>
+                    {/* Certifications */}
+                    {data.certifications && data.certifications.length > 0 && (
+                        <section className="mt-8">
+                            <h2 className="text-sm font-semibold tracking-widest text-zinc-600 mb-4">
+                                CERTIFICATIONS
+                            </h2>
 
-                <div className="text-gray-700">
-                {data.certifications.map((certification) => certification.name).join(' • ')}
-                </div>
-            </section>
-            )}
+                            <div className="text-sm text-zinc-700">
+                                {data.certifications.map((certification) => certification.name).join(' • ')}
+                            </div>
+                        </section>
+                    )}
                 </div>
 
                 {/* Right Column - Main Content */}

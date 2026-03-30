@@ -288,6 +288,49 @@ const TechnicalTemplate = ({ data, accentColor }) => {
                     </section>
                 )}
 
+                {/* Languages */}
+                {data.languages && data.languages.length > 0 && (
+                    <section className="mb-12">
+                        <div className="flex items-center gap-3 mb-6">
+                            <h2 className="text-2xl font-bold text-gray-900 font-sans">
+                                LANGUAGES
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {data.languages.map((language, index) => (
+                                <div key={index} className="flex items-center py-2 px-4 bg-gray-50 rounded-lg">
+                                    <div className="size-2 rounded-full mr-3 flex-shrink-0" 
+                                         style={{ backgroundColor: accentColor }}></div>
+                                    <span className="text-gray-800 font-medium">
+                                        {language.name}{language.level ? ` (${language.level})` : ''}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
+                {/* Certifications */}
+                {data.certifications && data.certifications.length > 0 && (
+                    <section>
+                        <div className="flex items-center gap-3 mb-6">
+                            <h2 className="text-2xl font-bold text-gray-900 font-sans">
+                                CERTIFICATIONS
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {data.certifications.map((cert, index) => (
+                                <div key={index} className="flex items-center py-2 px-4 bg-gray-50 rounded-lg">
+                                    <div className="size-2 rounded-full mr-3 flex-shrink-0" 
+                                         style={{ backgroundColor: accentColor }}></div>
+                                    <span className="text-gray-800 font-medium">{cert.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                )}
     
             </div>
         </div>

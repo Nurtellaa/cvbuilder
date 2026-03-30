@@ -244,6 +244,42 @@ const ExecutiveTemplate = ({ data, accentColor }) => {
                     )}
                 </div>
 
+                {/* Languages */}
+                {data.languages && data.languages.length > 0 && (
+                    <section className="mt-16">
+                        <div className="flex items-center gap-4 mb-8">
+                            <h2 className="text-xl font-light text-gray-900 tracking-wide">
+                                LANGUAGES
+                            </h2>
+                        </div>
+
+                        <div className="text-gray-700">
+                            {data.languages
+                                .map((language) =>
+                                    language.level
+                                        ? `${language.name} • ${language.level}`
+                                        : language.name
+                                )
+                                .join(' • ')}
+                        </div>
+                    </section>
+                )}
+
+                {/* Certifications */}
+                {data.certifications && data.certifications.length > 0 && (
+                    <section className="mt-16">
+                        <div className="flex items-center gap-4 mb-8">
+                            <h2 className="text-xl font-light text-gray-900 tracking-wide">
+                                CERTIFICATIONS
+                            </h2>
+                        </div>
+
+                        <div className="text-gray-700">
+                            {data.certifications.map((certification) => certification.name).join(' • ')}
+                        </div>
+                    </section>
+                )}
+
             </div>
         </div>
     );

@@ -195,7 +195,7 @@ const MinimalTemplate = ({ data, accentColor }) => {
 
             {/* Skills - Clean tags */}
             {data.skills && data.skills.length > 0 && (
-                <section>
+                <section className="mb-8">
                     <div className="flex items-center gap-2 mb-4">
                         <Award className="size-4" style={{ color: accentColor }} />
                         <h2 className="text-xs uppercase tracking-widest font-medium" style={{ color: accentColor }}>
@@ -212,6 +212,42 @@ const MinimalTemplate = ({ data, accentColor }) => {
                                 {skill}
                             </span>
                         ))}
+                    </div>
+                </section>
+            )}
+
+            {/* Languages */}
+            {data.languages && data.languages.length > 0 && (
+                <section className="mb-8">
+                    <div className="flex items-center gap-2 mb-4">
+                        <h2 className="text-xs uppercase tracking-widest font-medium" style={{ color: accentColor }}>
+                            LANGUAGES
+                        </h2>
+                    </div>
+
+                    <div className="text-gray-700 text-sm">
+                        {data.languages
+                            .map((language) =>
+                                language.level
+                                    ? `${language.name} • ${language.level}`
+                                    : language.name
+                            )
+                            .join(' • ')}
+                    </div>
+                </section>
+            )}
+
+            {/* Certifications */}
+            {data.certifications && data.certifications.length > 0 && (
+                <section>
+                    <div className="flex items-center gap-2 mb-4">
+                        <h2 className="text-xs uppercase tracking-widest font-medium" style={{ color: accentColor }}>
+                            CERTIFICATIONS
+                        </h2>
+                    </div>
+
+                    <div className="text-gray-700 text-sm">
+                        {data.certifications.map((certification) => certification.name).join(' • ')}
                     </div>
                 </section>
             )}
